@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Livestock Variables for New South Wales" },
+    "data": {
+    "url": "data.xlsx",
+    "format": {
+        "type": "csv"
+    }
+    },
+    "mark": "bar",
+    "encoding": {
+    "x": {
+        "field": "Variable",
+        "type": "nominal",
+        "title": "Livestock Type"
+    },
+    "y": {
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Count (no.)"
+    },
+    "color": {
+        "field": "Industry",
+        "type": "nominal",
+        "title": "Industry"
+    },
+    "tooltip": [
+        {"field": "Variable", "type": "nominal", "title": "Livestock Type"},
+        {"field": "Value", "type": "quantitative", "title": "Count"},
+        {"field": "Year", "type": "ordinal", "title": "Year"},
+        {"field": "Industry", "type": "nominal", "title": "Industry"}
+    ]
+    }
+}
