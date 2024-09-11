@@ -1,12 +1,30 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Livestock Variables for New South Wales" },
+    "title": { "text": "Livestock Variables for New South Wales by Year" },
     "data": {
-    "url": "data.xlsx",
+    "url": "data.csv",
     "format": {
         "type": "csv"
     }
     },
+    "params": [
+    {
+        "name": "yearSelector",
+        "value": 1990,
+        "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2022,
+        "step": 1,
+        "name": "Select Year: "
+        }
+    }
+    ],
+    "transform": [
+    {
+        "filter": "datum.Year == yearSelector"
+    }
+    ],
     "mark": "bar",
     "encoding": {
     "x": {
