@@ -2,7 +2,13 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 600,
     "height": 400,
-    "background": "#e0f7fa",
+    "title": {
+      "text": "Percentage of Total Livestock by State",
+      "anchor": "middle",
+      "fontSize": 18,
+      "fontWeight": "bold",
+      "dy": -20
+    },
     "layer": [
       {
         "data": {
@@ -31,7 +37,7 @@
                 "format": {"type": "csv"}
               },
               "key": "State",
-              "fields": ["Value"]  
+              "fields": ["Value"]
             }
           }
         ],
@@ -45,13 +51,13 @@
             "field": "Value",
             "type": "quantitative",
             "scale": {
-              "domain": [0, 100],  
-              "range": ["#f7fbff", "#08306b"]  
+              "domain": [15, 30],
+              "range": ["#c7e9b4", "#00441b"]
             }
           },
           "tooltip": [
             {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
-            {"field": "Value", "type": "quantitative", "title": "Percentage of Country (%)"}  
+            {"field": "Value", "type": "quantitative", "title": "Percentage of Country (%)"}
           ]
         }
       }
