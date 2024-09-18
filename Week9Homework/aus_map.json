@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Livestock Counts by State",
+    "width": 800,
+    "height": 600,
+    "projection": {"type": "equalEarth"},
+    "layer": [
+    {
+        "data": {
+        "url": "map_data.topojson",
+        "format": {"type": "topojson", "feature": "states"}
+        },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"} },
+    {
+        "data": {      "url": "data.csv",   "format": {"type": "csv"}
+        },
+        "transform": [
+        {
+            "lookup": "State",
+            "from": {
+            "data": {
+                "url": "map_data.topojson",
+                "format": {"type": "topojson", "feature": "states"}
+            },
+            "key": "properties.STE_NAME16",
+            "fields": ["Value"]
+            }
+        }
+        ],
+        "mark": "circle",
+        "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {"field": "Value", "type": "quantitative"},
+        "color": {"field": "Value", "type": "quantitative", "scale": {"scheme": "blues"}},
+        "tooltip": [{"field": "State"}, {"field": "Value"}]
+        }
+    }
+    ]
+}
