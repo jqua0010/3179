@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {
-      "text": {"signal": "stateSelector === 'Total for Australia' ? 'Livestock Counts by Industry for All of Australia by Year' : 'Livestock Variables for ' + stateSelector + ' by Year'"},
+      "text": {"signal": "stateSelector === 'Total for Australia' ? 'Livestock by Industry for All of Australia per Year' : 'Livestock by Industry for ' + stateSelector + ' per Year'"},
       "fontSize": 18,
       "fontWeight": "bold",
       "anchor": "middle",
