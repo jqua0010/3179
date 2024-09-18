@@ -18,7 +18,8 @@
         },
         "key": "State",
         "fields": ["Value"]
-        }
+        },
+        "default": 0
     },
     {
         "aggregate": [
