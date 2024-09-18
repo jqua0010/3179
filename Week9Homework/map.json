@@ -51,7 +51,7 @@
           },
           "tooltip": [
             {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
-            {"field": "Value", "type": "quantitative", "title": "Value of Country (%)"}
+            {"field": "Value", "type": "quantitative", "title": "Percentage of Country (%)"}  
           ]
         }
       }
