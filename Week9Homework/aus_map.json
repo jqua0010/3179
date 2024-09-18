@@ -2,51 +2,45 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Livestock Counts by State",
     "width": 800,
-    "height": 600,
+    "height": 400,
     "projection": {"type": "equalEarth"},
-    "layer": [
+    "data": {
+    "url": "map_data.topojson",
+    "format": {"type": "topojson", "feature": "mapdata"}
+    },
+    "transform": [
     {
+        "lookup": "properties.STE_NAME16",
+        "from": {
         "data": {
-        "url": "map_data.topojson",
-        "format": {"type": "topojson", "feature": "mapdata"
+            "url": "data.csv",
+            "format": {"type": "csv"}
+        },
+        "key": "State",
+        "fields": ["Value"]
         }
-        },
-        "transform": [
+    },
+    {
+        "aggregate": [
         {
-            "lookup": "State",
-            "from": {
-            "data": {
-                "url": "data.csv",
-                "format": {"type": "csv"}
-            },
-            "key": "State",
-            "fields": ["State", "Value"]
-            }
-        },
-        {
-            "aggregate": [
-            {
-                "op": "sum",
-                "field": "Value",
-                "as": "Total_Livestock"
-            }
-            ],
-            "groupby": ["State"]
+            "op": "sum",
+            "field": "Value",
+            "as": "Total Livestock"
         }
         ],
-        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-        "encoding": {
-        "color": {
-            "field": "Total_Livestock",
-            "type": "quantitative",
-            "scale": {"scheme": "blues"},
-            "title": "Total Livestock"
-        },
-        "tooltip": [
-            {"field": "State", "type": "nominal", "title": "State"},
-            {"field": "Total_Livestock", "type": "quantitative", "title": "Total Livestock"}
-        ]
-        }
+        "groupby": ["properties.STE_NAME16"]
     }
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+    "color": {
+        "field": "Total Livestock",
+        "type": "quantitative",
+        "scale": {"scheme": "blues"}
+    },
+    "tooltip": [
+        {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
+        {"field": "Total Livestock", "type": "quantitative", "title": "Total Livestock"}
     ]
+    }
 }
