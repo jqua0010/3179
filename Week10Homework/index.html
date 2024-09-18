@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Livestock Map and Bar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <style>
+        /* Flexbox layout to position the charts side by side */
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .chart-container {
+            flex: 1;
+            margin: 10px;
+        }
+        
+        /* Optional: Set a fixed height for the charts */
+        #map_container, #bar_chart {
+            height: 500px;  /* Adjust the height as needed */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Livestock Map and Bar Chart</h1>
+
+<div class="container">
+    <div id="map_container" class="chart-container"></div>  <!-- Map will render here -->
+    <div id="bar_chart" class="chart-container"></div>  <!-- Bar chart will render here -->
+</div>
+
+<script type="text/javascript">
+    // Embed the map in 'map_container' div
+    vegaEmbed("#map_container", "map.json").then(function(result) {
+        console.log("Map loaded successfully.");
+    }).catch(console.error);
+
+    // Embed the bar chart in 'bar_chart' div
+    vegaEmbed("#bar_chart", "bar_chart.json").then(function(result) {
+        console.log("Bar chart loaded successfully.");
+    }).catch(console.error);
+</script>
+
+</body>
+</html>
