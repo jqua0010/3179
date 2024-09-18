@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600, 
+    "height": -10,
+    "data": {
+      "url": "https://raw.githubusercontent.com/jqua0010/3179/main/Week9Homework/aggregated_livestock_2022.csv",
+      "format": {"type": "csv"}
+    },
+    "mark": {
+      "type": "point",
+      "opacity": 0,
+      "size": 0
+    },
+    "encoding": {
+      "color": {
+        "field": "State",
+        "type": "nominal",
+        "legend": {
+          "title": "State Colors",
+          "orient": "bottom",
+          "direction": "horizontal",
+          "columns": 4  
+        }
+      }
+    }
+  }
+  
