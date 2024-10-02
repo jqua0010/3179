@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 400,
+    "title": {
+      "text": "Percentage of Total Livestock by State, 2022",
+      "anchor": "middle",
+      "fontSize": 18,
+      "fontWeight": "bold",
+      "dy": -20
+    },
+    "layer": [
+      {
+        "data": {
+          "graticule": true
+        },
+        "mark": {
+          "type": "geoshape",
+          "stroke": "#cccccc",
+          "strokeWidth": 0.5
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jqua0010/3179/main/Week9Homework/map_data.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "STE_2016_AUST"
+          }
+        },
+        "transform": [
+          {
+            "lookup": "properties.STE_NAME16",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/jqua0010/3179/main/Week9Homework/aggregated_livestock_2022.csv",
+                "format": {"type": "csv"}
+              },
+              "key": "State",
+              "fields": ["Value"]
+            }
+          }
+        ],
+        "mark": {
+          "type": "geoshape",
+          "stroke": "#000000",
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+          "color": {
+            "field": "Value",
+            "type": "quantitative",
+            "scale": {
+              "domain": [15, 30],
+              "range": ["#c7e9b4", "#00441b"]
+            }
+          },
+          "tooltip": [
+            {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
+            {"field": "Value", "type": "quantitative", "title": "Percentage of Country (%)"}
+          ]
+        }
+      }
+    ],
+    "projection": {
+      "type": "mercator",
+      "scale": 400,
+      "translate": [-620, 0]
+    }
+  }
+  
