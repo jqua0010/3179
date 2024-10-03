@@ -1,7 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
-    "height": 400,
+    "background": "#F2F3AE", 
+    "padding": 0,  
+    "width": 400,
+    "height": 250,
     "title": {
       "text": "Percentage of Total Livestock by State, 2022",
       "anchor": "middle",
@@ -64,8 +66,8 @@
     ],
     "projection": {
       "type": "mercator",
-      "scale": 400,
-      "translate": [-620, 0]
+      "scale": 300,
+      "translate": [-500, -30]
     }
   }
   
