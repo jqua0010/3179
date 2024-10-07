@@ -54,7 +54,7 @@
             "type": "quantitative",
             "scale": {
               "domain": [15, 30],
-              "range": ["#c7e9b4", "#00441b"]
+              "range": ["#c7e9b4", "#fe5d26"]
             }
           },
           "tooltip": [

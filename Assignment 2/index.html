@@ -9,79 +9,85 @@
     <style>
         /* Set the background color */
         body {
-            background-color: #558564; /* Background color */
+            background-color: #558564;
             font-family: Arial, sans-serif;
-            text-align: center; /* Center align all text content */
+            text-align: center;
         }
 
-        /* Fixed image on the left side of the page */
-        .floating-image-left {
-            position: fixed;
-            left: 0;
-            top: 200px; /* Adjust the top position as needed */
-            width: 350px; /* Adjust the width of the image */
-            z-index: 1000; /* Ensure it stays on top of other elements */
-        }
-
-        /* Fixed image on the right side of the page */
-        .floating-image-right {
-            position: fixed;
-            right: 20px;
-            top: 200px; /* Adjust the top position as needed */
-            width: 300px; /* Adjust the width of the image */
-            z-index: 1000; /* Ensure it stays on top of other elements */
-        }
-
-        /* Fixed image at the bottom left */
-        .floating-image-bottom-left {
-            position: fixed;
-            left: 33px;
-            bottom: 0;
-            width: 250px; /* Adjust the width of the image */
-            z-index: 1000; /* Ensure it stays on top of other elements */
-        }
-
-        /* Fixed image at the bottom right */
-        .floating-image-bottom-right {
-            position: fixed;
-            right: 33px;
-            bottom: 0;
-            width: 250px; /* Adjust the width of the image */
-            z-index: 1000; /* Ensure it stays on top of other elements */
-        }
-        
         /* Flexbox layout to position the charts underneath each other and center them */
         .container {
             display: flex;
-            flex-direction: column; /* Stacks the charts vertically */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         
         .chart-container {
             flex: 1;
-            border: 5px solid black; /* Add bold black border around the div */
-            background-color: #F2F3AE;  /* Set background color of the div */
-            margin: 20px; /* Adds margin around the div */
+            border: 5px solid black;
+            background-color: #F2F3AE;
+            margin: 20px;
             padding: 10px;
+            width: 80%; /* Set width as a percentage to ensure responsive design */
+            max-width: 700px; /* Optional max-width */
         }
-        
-        /* Optional: Set a fixed height for the charts */
-        #map_container, #bar_chart {
-            height: 500px;  /* Adjust the height as needed */
-        }
-        
+
         /* Style the heading */
         h1 {
             text-align: center;
-            color: #000000; /* Darker text color */
+            color: #000000;
+        }
+
+        /* Style for the text above the first chart */
+        .text-above {
+            font-size: 18px;
+            color: #000000;
+            margin: 20px 0;
+            width: 80%; /* Make the text container as wide as the charts */
+            max-width: 900px; /* Optional max-width */
+            text-align: justify; /* Optional: Justifies the text for a neater layout */
+            
         }
 
         /* Style for the text between charts */
         .text-between {
             font-size: 18px;
-            color: #333333;
+            color: #000000;
             margin: 20px 0; /* Adds spacing between the text and charts */
+            width: 80%; /* Make the text container as wide as the charts */
+            max-width: 900px; /* Optional max-width */
+
+        }
+
+         /* Style for the text between charts */
+        .metadata {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            color: #000000;
+            padding: 10px;
+            max-width: 700px; /* Optional max-width */
+
+        }
+        .metadata p {
+        margin: 5px 0;
+        }
+
+        .metadata a {
+        color: #006699;
+        text-decoration: none;
+        }
+
+        .metadata a:hover {
+        text-decoration: underline;
+        }
+        /* Style for the horizontal line (hr) between the charts */
+        .divider {
+            width: 80%; /* Same width as the charts */
+            max-width: 700px; /* Optional max-width */
+            border: 0;
+            height: 3px; /* Thickness of the line */
+            background-color: black; /* Color of the line */
+            margin: 10px 0; /* Spacing around the line */
         }
     </style>
 </head>
@@ -89,28 +95,44 @@
 
 <h1>Livestock in Australia</h1>
 
-<!-- Floating image on the left side of the screen -->
-<img src="cowpic.png" alt="Floating Image" class="floating-image-left">
-
-<!-- Floating image on the right side of the screen -->
-<img src="hay.png" alt="Floating Image" class="floating-image-right">
-
-<!-- Floating image at the bottom left corner -->
-<img src="fence.png" alt="Floating Image" class="floating-image-bottom-left">
-
-<!-- Floating image at the bottom right corner -->
-<img src="fence.png" alt="Floating Image" class="floating-image-bottom-right">
-
 <div class="container">
-    <!-- Text above -->
-    <div class="text-between">This text appears under the title</div>
+    <!-- Adjusted text width for the text above the first chart -->
+    <hr class="divider">
+
+    <div class="text-above">
+        In 2022, Australia’s livestock industry played a significant role in the economy, with each state contributing differently to the overall production. This visualization provides a breakdown of livestock distribution across the nation, showing how varying climates, landscapes, and agricultural practices shape the livestock landscape.
+    </div>
 
     <div id="map_container" class="chart-container"></div>  <!-- Map will render here -->
     
-    <!-- Text between the two charts -->
-    <div class="text-between">This text appears between the map and bar chart</div>
+    <!-- Unchanged text between the two charts -->
+    <div class="text-between">
+        The map above illustrates the percentage share of livestock in each state, giving insight into which regions lead the country in animal agriculture. 
+        States such as Queensland and New South Wales, with their expansive grazing lands, hold the largest share of livestock. 
+        In contrast, states like Tasmania, with their smaller landmass, contribute a smaller portion but still play a critical role in specific livestock categories.    </div>
+    <hr class="divider">
+    <div class="text-between">
+        Below, we delve deeper into the different types of livestock industries across Australia. The bar chart breaks down the number of livestock by industry for the entire country, showing how beef, 
+        dairy, and sheep farming dominate the landscape. It highlights the importance of mixed farming in some regions, where producers balance sheep and cattle to diversify their output and mitigate risks. 
+        This chart helps to visualize the balance and scale of various industries within the sector, offering a clearer picture of how Australia’s livestock industry is structured.    </div>
     
     <div id="bar_chart" class="chart-container"></div>  <!-- Bar chart will render here -->
+    <div class="text-between">
+        This chart visualizes livestock trends over time, helping you understand how livestock numbers have changed across different states and categories. 
+        By exploring the filters, you can compare trends across regions, livestock types, and industry classifications. 
+        It's a valuable tool for identifying key patterns in agricultural production and shifts in industry dynamics over the years. Be sure to check out the trends across the different industry types!   </div>
+    <div id="line_chart" class="chart-container"></div>  <!-- Bar chart will render here -->
+    <hr class="divider">
+
+    <div class="metadata">
+    <p><strong>Metadata:</strong></p>
+    <p><strong>Data Source:</strong> All data in this visualization is sourced from the <a href="https://www.agriculture.gov.au/abares/data/farm-data-portal#data-download" target="_blank">Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) Farm Data Portal</a>.</p>
+    <p><strong>Author:</strong> Jared Quail</p>
+    <p><strong>Date Created:</strong> 7 October 2024</p>
+    <p><strong>Last Updated:</strong> 9 October 2024</p>
+    <p><strong>Notes:</strong> This dataset reflects livestock trends across Australia, providing insights into agricultural patterns by state, livestock type, and industry classification. This was created for FIT3179 Data Visualisation 2</p></div>
+    <hr class="divider">
+
 </div>
 
 <script type="text/javascript">
@@ -122,6 +144,11 @@
     // Embed the bar chart in 'bar_chart' div
     vegaEmbed("#bar_chart", "bar_chart.json").then(function(result) {
         console.log("Bar chart loaded successfully.");
+    }).catch(console.error);
+
+    // Embed the line chart in 'line_chart' div
+    vegaEmbed("#line_chart", "line_chart.json").then(function(result) {
+        console.log("Line chart loaded successfully.");
     }).catch(console.error);
 </script>
 
