@@ -1,135 +1,137 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#F2F3AE",
-    "padding": 0,
-    "title": {
-      "text": {
-        "expr": "stateSelector === 'Total for Australia' ? 'Livestock by Industry over Time in Australia' : 'Livestock by Industry over Time in ' + stateSelector"
-      },
-      "fontSize": 18,
-      "fontWeight": "bold",
-      "anchor": "middle",
-      "dy": -20
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#F2F3AE",
+  "padding": 0,
+  "title": {
+    "text": {
+      "expr": "stateSelector === 'Total for Australia' ? 'Livestock by Industry over Time in Australia' : 'Livestock by Industry over Time in ' + stateSelector"
     },
-    "width": 450,
-    "height": 250,
-    "data": {
-      "url": "data.csv",
-      "format": {
-        "type": "csv"
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "dy": -20
+  },
+  "width": 450,
+  "height": 250,
+  "data": {
+    "url": "data.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "params": [
+    {
+      "name": "stateSelector",
+      "value": "Victoria",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Total for Australia",
+          "New South Wales",
+          "Victoria",
+          "Queensland",
+          "South Australia",
+          "Western Australia",
+          "Tasmania",
+          "Northern Territory"
+        ],
+        "name": "Select State: "
       }
     },
-    "params": [
-      {
-        "name": "stateSelector",
-        "value": "Total for Australia",
-        "bind": {
-          "input": "select",
-          "options": [
-            "Total for Australia",
-            "New South Wales",
-            "Victoria",
-            "Queensland",
-            "South Australia",
-            "Western Australia",
-            "Tasmania",
-            "Northern Territory"
-          ],
-          "name": "Select State: "
-        }
-      },
-      {
-        "name": "variableSelector",
-        "value": "Beef cows at 30 June (no.)",
-        "bind": {
-          "input": "select",
-          "options": [
-            "Beef bulls at 30 June (no.)",
-            "Beef calves at 30 June (no.)",
-            "Beef cows at 30 June (no.)",
-            "Dairy cattle at June 30 (no.)",
-            "Lambs at 30 June (no.)",
-            "Sheep flock at 30 June (no.)"
-          ],
-          "name": "Select Livestock: "
-        }
-      },
-      {
-        "name": "industrySelector",
-        "value": "All Broadacre",
-        "bind": {
-          "input": "select",
-          "options": [
-            "All Broadacre",
-            "Beef",
-            "Dairy",
-            "Cropping"
-          ],
-          "name": "Select Industry: "
-        }
+    {
+      "name": "variableSelector",
+      "value": "Beef cows at 30 June (no.)",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Beef bulls at 30 June (no.)",
+          "Beef calves at 30 June (no.)",
+          "Beef cows at 30 June (no.)",
+          "Dairy cattle at June 30 (no.)",
+          "Lambs at 30 June (no.)",
+          "Sheep flock at 30 June (no.)"
+        ],
+        "name": "Select Livestock: "
       }
-    ],
-    "transform": [
-      {
-        "filter": "stateSelector === 'Total for Australia' ? true : datum.State == stateSelector"
-      },
-      {
-        "filter": "datum.Variable == variableSelector"
-      },
-      {
-        "filter": "datum.Industry == industrySelector"
+    },
+    {
+      "name": "industrySelector",
+      "value": "All Broadacre",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All Broadacre",
+          "Beef",
+          "Dairy",
+          "Cropping"
+        ],
+        "name": "Select Industry: "
       }
-    ],
-    "mark": "line",
-    "encoding": {
-      "x": {
+    }
+  ],
+  "transform": [
+    {
+      "filter": "stateSelector === 'Total for Australia' ? true : datum.State == stateSelector"
+    },
+    {
+      "filter": "datum.Variable == variableSelector"
+    },
+    {
+      "filter": "datum.Industry == industrySelector"
+    },
+    {
+      "filter": "year(datum.Year) >= 2005"  
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Livestock Count",
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    },
+    "color": {
+      "value": "#fe5d26"  
+    },
+    "tooltip": [
+      {
         "field": "Year",
         "type": "temporal",
-        "title": "Year",
-        "axis": {
-          "labelFontSize": 12,
-          "titleFontSize": 14
-        }
+        "title": "Year"
       },
-      "y": {
+      {
         "field": "Value",
         "type": "quantitative",
-        "title": "Livestock Count",
-        "axis": {
-          "labelFontSize": 12,
-          "titleFontSize": 14
-        }
+        "title": "Livestock Count"
       },
-      "color": {
-        "value": "#fe5d26"  
+      {
+        "field": "Variable",
+        "type": "nominal",
+        "title": "Livestock Type"
       },
-      "tooltip": [
-        {
-          "field": "Year",
-          "type": "temporal",
-          "title": "Year"
-        },
-        {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "Livestock Count"
-        },
-        {
-          "field": "Variable",
-          "type": "nominal",
-          "title": "Livestock Type"
-        },
-        {
-          "field": "State",
-          "type": "nominal",
-          "title": "State"
-        },
-        {
-          "field": "Industry",
-          "type": "nominal",
-          "title": "Industry"
-        }
-      ]
-    }
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "Industry",
+        "type": "nominal",
+        "title": "Industry"
+      }
+    ]
   }
-  
+}

@@ -9,7 +9,7 @@
     <style>
         /* Set the background color */
         body {
-            background-color: #558564;
+            background-color: #8dc39f;
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -44,7 +44,7 @@
             color: #000000;
             margin: 20px 0;
             width: 80%; /* Make the text container as wide as the charts */
-            max-width: 900px; /* Optional max-width */
+            max-width: 700px; /* Optional max-width */
             text-align: justify; /* Optional: Justifies the text for a neater layout */
             
         }
@@ -55,7 +55,16 @@
             color: #000000;
             margin: 20px 0; /* Adds spacing between the text and charts */
             width: 80%; /* Make the text container as wide as the charts */
-            max-width: 900px; /* Optional max-width */
+            max-width: 700px; /* Optional max-width */
+
+        }
+
+        /* Style for the text between charts */
+        .heading1 {
+            font-size: 18px;
+            color: #000000;
+            width: 80%; /* Make the text container as wide as the charts */
+            max-width: 700px; /* Optional max-width */
 
         }
 
@@ -66,6 +75,8 @@
             color: #000000;
             padding: 10px;
             max-width: 700px; /* Optional max-width */
+            width: 80%; /* Make the text container as wide as the charts */
+
 
         }
         .metadata p {
@@ -98,10 +109,11 @@
 <div class="container">
     <!-- Adjusted text width for the text above the first chart -->
     <hr class="divider">
-
     <div class="text-above">
         In 2022, Australia’s livestock industry played a significant role in the economy, with each state contributing differently to the overall production. This visualization provides a breakdown of livestock distribution across the nation, showing how varying climates, landscapes, and agricultural practices shape the livestock landscape.
     </div>
+    <hr class="divider">
+
 
     <div id="map_container" class="chart-container"></div>  <!-- Map will render here -->
     
@@ -117,6 +129,8 @@
         This chart helps to visualize the balance and scale of various industries within the sector, offering a clearer picture of how Australia’s livestock industry is structured.    </div>
     
     <div id="bar_chart" class="chart-container"></div>  <!-- Bar chart will render here -->
+    <hr class="divider">
+
     <div class="text-between">
         This chart visualizes livestock trends over time, helping you understand how livestock numbers have changed across different states and categories. 
         By exploring the filters, you can compare trends across regions, livestock types, and industry classifications. 

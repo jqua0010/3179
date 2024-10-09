@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "#F2F3AE",
-  "padding": 0, 
+  "padding": 0,
   "title": {
     "text": {
       "expr": "stateSelector === 'Total for Australia' ? 'Livestock by Industry for All of Australia per Year' : 'Livestock by Industry for ' + stateSelector + ' per Year'"
@@ -25,7 +25,7 @@
       "value": 2022,
       "bind": {
         "input": "range",
-        "min": 1990,
+        "min": 2005,  
         "max": 2022,
         "step": 1,
         "name": "Select Year: "
